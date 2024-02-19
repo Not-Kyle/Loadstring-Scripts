@@ -28,7 +28,6 @@ if not getgenv()['CoryuReset'] then
         end
     end
 
-    _G.Version = 1.1
     local function API()
         if not _G.Version == 1.1 then
             AddNotification('Internal Error', 'Reset is out of date! For further support contact Coryu @killserver' Button1 = 'Okay!')
