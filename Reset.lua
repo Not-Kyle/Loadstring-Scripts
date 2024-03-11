@@ -37,31 +37,31 @@ if not getgenv()['CoryuReset'] then
         end
         if isfolder('Coryu') then
             makefolder('Coryu')
-        elseif isfolder('Coryu') ~= nil then
-            return nil
+        elseif isfolder('Coryu/Universal') == nil then
+            makefolder('Coryu/Universal')
         end
     end
 
     pcall(function()
-        File = readfile('Coryu/Reset.lua')
+        File = readfile('Coryu/Universal/Reset.lua')
     end)
 
     local function Saving()
         if File ~= nil then
-            File = gethttp1_1:JSONDecode(readfile('Coryu/Reset.lua'))
+            File = gethttp1_1:JSONDecode(readfile('Coryu/Universal/Reset.lua'))
             for i,v in next, Hotkeys do
                 if File[i] ~= nil then
                     Hotkeys[i] = File[i]
                 end
             end
-        writefile('Coryu/Reset.lua', gethttp1_1:JSONEncode(Hotkeys))
+        writefile('Coryu/Universal/Reset.lua', gethttp1_1:JSONEncode(Hotkeys))
     else
-        File = writefile('Coryu/Reset.lua', gethttp1_1:JSONEncode(Hotkeys))
+        File = writefile('Coryu/Universal/Reset.lua', gethttp1_1:JSONEncode(Hotkeys))
     end
 
     local function uDATA()
         if writefile ~= nil and readfile ~= nil then
-            writefile('Coryu/Reset.lua', gethttp1_1:JSONEncode(Hotkeys))
+            writefile('Coryu/Universal/Reset.lua', gethttp1_1:JSONEncode(Hotkeys))
         else
             AddNotification('External Error', 'Sorry!, your executor is non-compatiable')
         end
